@@ -8,7 +8,7 @@ namespace consoleapplication1
 {
     // Using out parameters to return multiple values from functions
     // The out keyword causes arguments to be passed by reference.
-    // This is like the ref keyword, except that ref requires that the variable be intialized BEFORE it is passed.
+    // This is like the ref keyword, except that ref requires that the variable be initialized BEFORE it is passed.
     // To use an out parameter, both the method definition and the calling method must explicitly use the out keyword.
     class test
     {
