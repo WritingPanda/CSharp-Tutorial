@@ -6,33 +6,22 @@ using System.Threading.Tasks;
 
 namespace consoleapplication1
 {
-    // Using out parameters to return multiple values from functions
-    // The out keyword causes arguments to be passed by reference.
-    // This is like the ref keyword, except that ref requires that the variable be initialized BEFORE it is passed.
-    // To use an out parameter, both the method definition and the calling method must explicitly use the out keyword.
-    class test
-    {
-        public int outSample(out string first, out string second, int x, int y)
-        {
-            first = "Now I know how to add.";
-            second = "Now I know how to add again!";
-            return x + y;
-        }
-    }
 
+    // Using the length property of arrays and converting between data types
     class Program
     {
         static void Main(string[] args)
         {
-            test testObj = new test();
+            double[] myArray = new double[5]; // declaring and reserving an array that stores doubles[5 of them] (numbers with decimals)
 
-            string first;
-            string second;
-            Console.WriteLine("The sum of 1 and 2 is {0}.", testObj.outSample(out first, out second, 1, 2));
-            Console.WriteLine(first + " " + second);
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                // Start from index zero in the array and loop until we are less than the length of the array
+                
+                myArray[i] = (double)i / (double)(i + 1); // This code converts the index variable to a double data type for mathematics.
+                Console.WriteLine("The value of {0} divided by {1} is {2}.", i, i + 1, myArray[i]);
+            }
             Console.Read();
         }
     }
 }
-
-// You can use the out contextual keyword in two contexts, as a parameter modifier or in generic type parameter declarations in interfaces and delegates. 
