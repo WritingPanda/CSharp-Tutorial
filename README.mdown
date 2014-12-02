@@ -1,0 +1,17 @@
+# A C# Tutorial
+
+I am learning C# for work (and a little bit for pleasure).
+
+I am using this tutorial on [Udemy.com](http://udemy.com) called [A 19 Hour C# Course With Microsoft Visual Studio 2013](https://www.udemy.com/csharpbasics/#).
+
+I have been doing the tutorial for a while now, and I just realized that I should probably be posting my notes from the application. Instead of saving multiple projects, they will all be in one project but erased as I go through each lesson. Before I erase the code, however, I will be commit the changes to Github to act as my reference for later on.
+
+Brilliant, right? I think so. You most likely don't, though. That's okay.
+
+### Issues with course
+
+1. The quizzes are not implemented well. The questions sometimes do not make sense
+2. Tom's spelling is not great, but he is working to improve on it
+3. He repeats himself a lot, but for beginners, that would be useful. 
+
+So far, so good! Thank you Tom for making such a great course so far! I have learned a lot about C#, and I am looking forward to learning more!
