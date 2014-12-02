@@ -6,33 +6,34 @@ using System.Threading.Tasks;
 
 namespace consoleapplication1
 {
-    // Passing arrays as function arguments
-    // When arrays are passed in a function, the data is not copied. The reference to the array is used instead.
-    class ArrayPrinter
-    {
-        public static void printArray(int[] array)
-        {
-            for (int i = 0; i < array.Length; i++)
-            {
-                array[i] = array[i] + 1; // Take each value and add one to the index
-                Console.WriteLine("The value at index {0} is {1}.", i, array[i]);
-            }
-        }
-    }
-
+    // Params keyword in function headers
     class Program
     {
+        public static void paramExample(int c, params object[] x) // params must be the final parameter in the list
+        {
+            Console.WriteLine(c);
+            
+            for (int i = 0; i < x.Length; i++)
+            {
+                Console.WriteLine("The value stored at index {0} is {1}.", i, x[i]);
+            }
+        }
+
         static void Main(string[] args)
         {
-            int[] arr = { 1, 2, 3, 4, 5 };
-            ArrayPrinter.printArray(arr);
+            Program.paramExample(4, 1);
+            Program.paramExample(1, "example", "A", 2.45644);
 
-            for (int i = 0; i < arr.Length; i++)
-            {
-                Console.WriteLine("The value at index {0} is {1}.", i, arr[i]);
-            }
-            
             Console.Read();
         }
     }
 }
+
+// Output:
+
+// 4
+// The value stored at index 0 is 1.
+// 1
+// The value stored at index 0 is example.
+// The value stored at index 1 is A.
+// The value stored at index 2 is 2.45644.
