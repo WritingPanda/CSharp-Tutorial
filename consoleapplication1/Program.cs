@@ -6,24 +6,33 @@ using System.Threading.Tasks;
 
 namespace consoleapplication1
 {
-    // Multidimensional Arrays (Matrix)
+    // Passing arrays as function arguments
+    // When arrays are passed in a function, the data is not copied. The reference to the array is used instead.
+    class ArrayPrinter
+    {
+        public static void printArray(int[] array)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = array[i] + 1; // Take each value and add one to the index
+                Console.WriteLine("The value at index {0} is {1}.", i, array[i]);
+            }
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
-            int[,] matrix = new int[2, 2]; // Declare and initialize a multidimensional array of size 2 by 2. This means 4 cells ( 0, 1 by 0, 1 )
+            int[] arr = { 1, 2, 3, 4, 5 };
+            ArrayPrinter.printArray(arr);
 
-            for (int i = 0; i < matrix.GetLength(0); i++) // Controls row index, meaning moves vertically down the matrix.
+            for (int i = 0; i < arr.Length; i++)
             {
-                for (int j = 0; j < matrix.GetLength(1); j++) // Controls column index, meaning moves horizontally across the matrix
-                {
-                    matrix[i, j] = 1 + j;
-                }
+                Console.WriteLine("The value at index {0} is {1}.", i, arr[i]);
             }
+            
+            Console.Read();
         }
     }
 }
-
-// What this looks like
-// [0, 0] [0, 1]
-// [1, 0] [1, 1]
