@@ -6,29 +6,30 @@ using System.Threading.Tasks;
 
 namespace consoleapplication1
 {
-    // User defined data type
-
-    class Person
-    {
-        private string ssn; // We are the ones who created this particular class with these properties
-        private int bankBalance;
-        public string name;
-
-        public Person(string social, int bankBal, string fullName)
-        {
-            this.ssn = social;
-            this.bankBalance = bankBal;
-            this.name = fullName;
-        }
-    }
-
+    // Dynamic Data Typing
+    
     class Program
     {
-        static void Main(string[] args) // the method stays in memory the entire time
+        static void Main(string[] args)
         {
-            int x = 5;
+            // The dynamic keyword represents an object whose operations will be resolved at runtime
+            dynamic x;
 
-            Person per1 = new Person("456-54-345", 100000, "Diego Dog"); // user defined data type object
+            x = 5;
+            // x becomes an int
+            Console.WriteLine(x);
+
+            x = "hello";
+            // x becomes a string
+            Console.WriteLine(x);
+
+            x = 'C';
+            // x becomes a char
+            Console.WriteLine(x);
+
+            Console.Read();
+
+            // Local variable x is a dynamic {int}, then a dynamic {string}, and then a dynamic {char}.
         }
     }
 }
