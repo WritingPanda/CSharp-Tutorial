@@ -14,4 +14,9 @@ Brilliant, right? I think so. You most likely don't, though. That's okay.
 2. Tom's spelling is not great, but he is working to improve on it
 3. He repeats himself a lot, but for beginners, that would be useful. 
 
+### Things I like
+
+1. Repetition - I feel like I am getting the syntax really well because I have to type it out so many times. At first, I thought it was annoying, but now that I am able to write C# code so quickly (basic stuff), I see the benefit from doing things over and over again.
+2. Debug and step into - using a great feature of Visual Studio to step into the code line by line is fantastic. I wish it could work with every language with which I write code.
+
 So far, so good! Thank you Tom for making such a great course so far! I have learned a lot about C#, and I am looking forward to learning more!
