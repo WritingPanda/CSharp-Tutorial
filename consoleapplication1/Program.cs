@@ -6,29 +6,16 @@ using System.Threading.Tasks;
 
 namespace consoleapplication1
 {
-    // How to declare and access instance variables
+    // Instance variables with two objects
     class Person
     {
-        // Restricted access to these variables, only accessible in this class
-        private string fullName; // Instance variable (or field)
-        private int age;
+        public string personName;
+        public string ssn;
 
-        // Constructor and setter
-        public Person(string personName, int personAge)
+        public Person(string fullName, string social)
         {
-            this.fullName = personName; // Sets the instance variable
-            this.age = personAge;
-        }
-
-        // Getters
-        public string getName()
-        {
-            return this.fullName; // this refers to the current object
-        }
-
-        public int getAge()
-        {
-            return this.age;
+            this.personName = fullName;
+            this.ssn = social;
         }
     }
 
@@ -36,9 +23,12 @@ namespace consoleapplication1
     {
         static void Main(string[] args)
         {
-            Person per1 = new Person("Omar Quimbaya", 28);
+            Person per1 = new Person("Omar Quimbaya", "555-55-5555");
+            Person per2 = new Person("Becky Liu", "444-55-7777");
 
-            Console.WriteLine(per1.getName() + " is " + per1.getAge());
+            Console.WriteLine(per1.personName);
+            Console.WriteLine(per2.personName);
+
             Console.Read();
         }
     }
