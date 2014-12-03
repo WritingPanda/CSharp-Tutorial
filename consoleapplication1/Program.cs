@@ -6,31 +6,39 @@ using System.Threading.Tasks;
 
 namespace consoleapplication1
 {
-    // Difference between dynamic and var
-    
+    // How to declare and access instance variables
+    class Person
+    {
+        // Restricted access to these variables, only accessible in this class
+        private string fullName; // Instance variable (or field)
+        private int age;
+
+        // Constructor and setter
+        public Person(string personName, int personAge)
+        {
+            this.fullName = personName; // Sets the instance variable
+            this.age = personAge;
+        }
+
+        // Getters
+        public string getName()
+        {
+            return this.fullName; // this refers to the current object
+        }
+
+        public int getAge()
+        {
+            return this.age;
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
-            // Variables that are declared at method scope can have an IMPLICIT type var.
-            // An implicitly typed local variable is strongly typed just as if you had declared the type yourself.
-            // The compiler determines the type.
-            // var i = 10; IMPLICITLY typed
-            // int i = 10; EXPLICITLY typed
-            var x = 5;
-            var y = "Hello";
+            Person per1 = new Person("Omar Quimbaya", 28);
 
-            // The type is a static type, but an object of type dynamic bypasses static type checking. 
-            // In most cases, it functions like it has type object. 
-            // At compile time, an element that is typed as dynamic is assumed to support any operation. 
-            // Therefore, you do not have to be concerned about whether the object gets its value from a COM API, from a dynamic language such as IronPython, from the HTML Document Object Model (DOM), from reflection, or from somewhere else in the program. 
-            // However, if the code is not valid, errors are caught at run time.
-            dynamic z = x;
-            Console.WriteLine(z);
-
-            z = y;
-            Console.WriteLine(z);
-
+            Console.WriteLine(per1.getName() + " is " + per1.getAge());
             Console.Read();
         }
     }
