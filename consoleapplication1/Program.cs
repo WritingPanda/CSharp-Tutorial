@@ -41,7 +41,7 @@ namespace consoleapplication1
 
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args) // the method stays in memory the entire time
         {
             calculator calc = new calculator(); // Declare and reserve memory for a calculator object
 
