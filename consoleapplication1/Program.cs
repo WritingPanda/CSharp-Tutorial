@@ -6,36 +6,19 @@ using System.Threading.Tasks;
 
 namespace consoleapplication1
 {
-    // Create a class, add four functions, understand variable scope
+    // User defined data type
 
-    class calculator
+    class Person
     {
-        public calculator()
-        {
-            Console.WriteLine("We are making a calculator object.");
-        }
+        private string ssn; // We are the ones who created this particular class with these properties
+        private int bankBalance;
+        public string name;
 
-        // All of the variables are local variables and copied
-        // Scoped only to the method
-        // Anything that happens to the variables in the methods, it does not change the original value of the variables.
-        public double Add(double x, double y)
+        public Person(string social, int bankBal, string fullName)
         {
-            return x + y;
-        }
-
-        public double Subtract(double x, double y)
-        {
-            return x - y;
-        }
-
-        public double Multiply(double x, double y)
-        {
-            return x * y;
-        }
-
-        public double Divide(double x, double y)
-        {
-            return x / y;
+            this.ssn = social;
+            this.bankBalance = bankBal;
+            this.name = fullName;
         }
     }
 
@@ -43,15 +26,9 @@ namespace consoleapplication1
     {
         static void Main(string[] args) // the method stays in memory the entire time
         {
-            calculator calc = new calculator(); // Declare and reserve memory for a calculator object
+            int x = 5;
 
-            double x = 4; double y = 6;
-            Console.WriteLine("The sum of {0} and {1} is {2}.", x, y, calc.Add(x, y));
-            Console.WriteLine("The difference of {0} and {1} is {2}.", x, y, calc.Subtract(x, y));
-            Console.WriteLine("The product of {0} and {1} is {2}.", x, y, calc.Multiply(x, y));
-            Console.WriteLine("The quotient of {0} and {1} is {2}.", x, y, calc.Divide(x, y));
-
-            Console.Read();
+            Person per1 = new Person("456-54-345", 100000, "Diego Dog"); // user defined data type object
         }
     }
 }
