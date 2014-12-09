@@ -6,31 +6,23 @@ using System.Threading.Tasks;
 
 namespace consoleapplication1
 {
-    // "Is a" relationships in object oriented programming
+    // Understanding the difference between class methods and object methods
 
-    class Vehicle
+    class Sample
     {
-        public Vehicle()
+        public Sample()
         {
-            Console.WriteLine("I can take you places!");
+            Console.WriteLine("I'm the class constructor.");
         }
-    }
 
-    class RaceCar : Vehicle // racecar is a kind of vehicle
-    {
-        public RaceCar() 
-            : base() // call the base class constructor 
+        public void objectMethod()
         {
-            Console.WriteLine("I can take you places very fast.");
+            Console.WriteLine("Called using an instance of the class.");
         }
-    }
 
-    class MiniVan : Vehicle // minivan is a kind of vehicle
-    {
-        public MiniVan()
-            : base()
+        public static void classMethod()
         {
-            Console.WriteLine("I can take you places along with many others!");
+            Console.WriteLine("Called on the class itself.");
         }
     }
 
@@ -38,8 +30,9 @@ namespace consoleapplication1
     {
         static void Main(string[] args)
         {
-            RaceCar newRaceCar = new RaceCar();
-            MiniVan myMiniVan = new MiniVan();
+            Sample samp = new Sample();
+            samp.objectMethod();
+            Sample.classMethod();
             Console.Read();
         }
     }
