@@ -6,28 +6,18 @@ using System.Threading.Tasks;
 
 namespace consoleapplication1
 {
-    // Instance variables with two objects
-    class Person
-    {
-        public string personName;
-        public string ssn;
-
-        public Person(string fullName, string social)
-        {
-            this.personName = fullName;
-            this.ssn = social;
-        }
-    }
+    // Class level fields sharing between among objects
 
     class Program
     {
         static void Main(string[] args)
         {
-            Person per1 = new Person("Omar Quimbaya", "555-55-5555");
-            Person per2 = new Person("Becky Liu", "444-55-7777");
+            Class1 myObj1 = new Class1(7);
+            Class1 myObj2 = new Class1(8);
 
-            Console.WriteLine(per1.personName);
-            Console.WriteLine(per2.personName);
+            Console.WriteLine("This instance variable is {0}.", myObj1.GetY());
+            Console.WriteLine("This instance variable is {0}.", myObj2.GetY());
+            Console.WriteLine("The value of the static instance variable is {0}.", Class1.GetValue());
 
             Console.Read();
         }
