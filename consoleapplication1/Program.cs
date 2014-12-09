@@ -6,22 +6,31 @@ using System.Threading.Tasks;
 
 namespace consoleapplication1
 {
-    // Setting up a simple inheritance example
+    // "Is a" relationships in object oriented programming
 
-    class quad
+    class Vehicle
     {
-        public quad() // this will be our parent class
+        public Vehicle()
         {
-            Console.WriteLine("I've got four sides!");
+            Console.WriteLine("I can take you places!");
         }
     }
 
-    class rectangle : quad // inheriting from the quad class
+    class RaceCar : Vehicle // racecar is a kind of vehicle
     {
-        // parent quad class' constructor is used since rectangle does not have a constructor of its own
-        public double Area( double x, double y )
+        public RaceCar() 
+            : base() // call the base class constructor 
         {
-            return x * y;
+            Console.WriteLine("I can take you places very fast.");
+        }
+    }
+
+    class MiniVan : Vehicle // minivan is a kind of vehicle
+    {
+        public MiniVan()
+            : base()
+        {
+            Console.WriteLine("I can take you places along with many others!");
         }
     }
 
@@ -29,9 +38,8 @@ namespace consoleapplication1
     {
         static void Main(string[] args)
         {
-            rectangle myRect = new rectangle();
-            double l = 12; double w = 13;
-            Console.WriteLine("This area of our rectangle is {0}.", myRect.Area(l, w));
+            RaceCar newRaceCar = new RaceCar();
+            MiniVan myMiniVan = new MiniVan();
             Console.Read();
         }
     }
