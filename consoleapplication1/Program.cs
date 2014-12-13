@@ -6,23 +6,16 @@ using System.Threading.Tasks;
 
 namespace consoleapplication1
 {
-    // Understanding the difference between class methods and object methods
+    // Equality by references
 
-    class Sample
+    class Person
     {
-        public Sample()
-        {
-            Console.WriteLine("I'm the class constructor.");
-        }
+        public string firstName;
+        public string lastName;
 
-        public void objectMethod()
+        public Person(string fname, string lname)
         {
-            Console.WriteLine("Called using an instance of the class.");
-        }
-
-        public static void classMethod()
-        {
-            Console.WriteLine("Called on the class itself.");
+            Console.WriteLine("My name is {0} {1}.", this.firstName = fname, this.lastName = lname);
         }
     }
 
@@ -30,9 +23,24 @@ namespace consoleapplication1
     {
         static void Main(string[] args)
         {
-            Sample samp = new Sample();
-            samp.objectMethod();
-            Sample.classMethod();
+            Person pr1 = new Person("Omar", "Quimbaya");
+            Console.WriteLine("The person's name is {0} {1}.", pr1.firstName, pr1.lastName);
+
+            // Points to the same reference in memory, so if one is changed, they are both changed.
+            Person pr2 = pr1;
+            
+            Console.WriteLine("It is {0} that pr1 and pr2 are the same.", pr1 == pr2);
+
+            // This changes both pr1 and pr2 since they both point to the same place in memory.
+            pr2.firstName = "Becky";
+
+            // This is true.
+            Console.WriteLine("It is {0} that pr1 and pr2 are the same.", pr1 == pr2);
+
+            // Both of these say "Becky Quimbaya"
+            Console.WriteLine("The person's name is {0} {1}.", pr1.firstName, pr1.lastName);
+            Console.WriteLine("The person's name is {0} {1}.", pr2.firstName, pr2.lastName);
+            
             Console.Read();
         }
     }
