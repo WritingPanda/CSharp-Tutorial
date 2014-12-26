@@ -9,6 +9,8 @@ namespace consoleapplication1
     // Creating and using virtual methods
     // Override the virtual class because child classes might need some type of 
     // customization.
+
+    // Here is a change!
     class Quad // represent four sided shapes in general
     {
         public Quad()
