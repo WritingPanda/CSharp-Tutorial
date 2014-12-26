@@ -6,16 +6,25 @@ using System.Threading.Tasks;
 
 namespace consoleapplication1
 {
-    // Equality by references
+    // Coding properties
+    // Getters and setters
 
     class Person
     {
-        public string firstName;
-        public string lastName;
-
-        public Person(string fname, string lname)
+        private string name;
+        private string ssn;
+        
+        // The keyword "value" MUST be used.
+        public string Social
         {
-            Console.WriteLine("My name is {0} {1}.", this.firstName = fname, this.lastName = lname);
+            get { return this.ssn; }
+            set { this.ssn = value; }
+        }
+
+        public string FullName
+        {
+            get { return this.name; }
+            set { this.name = value; }
         }
     }
 
@@ -23,25 +32,12 @@ namespace consoleapplication1
     {
         static void Main(string[] args)
         {
-            Person pr1 = new Person("Omar", "Quimbaya");
-            Console.WriteLine("The person's name is {0} {1}.", pr1.firstName, pr1.lastName);
+            Person newPerson = new Person();
+            newPerson.FullName = "John Smith";
+            newPerson.Social = "456-82-0932";
+            Console.WriteLine(newPerson.FullName + " has the social security number given by " + newPerson.Social);
 
-            // Points to the same reference in memory, so if one is changed, they are both changed.
-            Person pr2 = pr1;
-            
-            Console.WriteLine("It is {0} that pr1 and pr2 are the same.", pr1 == pr2);
-
-            // This changes both pr1 and pr2 since they both point to the same place in memory.
-            pr2.firstName = "Becky";
-
-            // This is true.
-            Console.WriteLine("It is {0} that pr1 and pr2 are the same.", pr1 == pr2);
-
-            // Both of these say "Becky Quimbaya"
-            Console.WriteLine("The person's name is {0} {1}.", pr1.firstName, pr1.lastName);
-            Console.WriteLine("The person's name is {0} {1}.", pr2.firstName, pr2.lastName);
-            
             Console.Read();
-        }
+        } 
     }
 }
