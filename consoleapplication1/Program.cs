@@ -7,23 +7,26 @@
 
 namespace consoleapplication1
 {
-    // Understanding Upcasting
+    // The purpose and coding of an abstract class
 
-    class Person
+    abstract class Shape // stores behaviors that are common to child classes
     {
-        private string _ssn;
-
-        public Person(string social)
-        {
-            this._ssn = social; // the instance field ssn is assigned using the local variable social
-        }
+        public abstract int Area(); // Must be implemented in derived classes
+        // code inheriting from this class must provide the code to define the Area()
     }
 
-    class Employer : Person
+    class Rectangle : Shape // inherits from Shape class
     {
-        public Employer(string social) : base(social) // calls the constructor of the base class
+        private int sideLength;
+
+        public Rectangle(int side)
         {
-            
+            this.sideLength = side;
+        }
+
+        public override int Area()
+        {
+            return this.sideLength*this.sideLength;
         }
     }
 
@@ -31,7 +34,7 @@ namespace consoleapplication1
     {
         static void Main(string[] args)
         {
-            Person per1 = new Employer("1231231313");
+            var myRectangle = new Rectangle(10);
             Console.Read();
         } 
     }
