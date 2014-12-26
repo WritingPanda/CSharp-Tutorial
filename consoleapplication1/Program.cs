@@ -1,4 +1,5 @@
 ﻿using System;
+//using System.Security.AccessControl;
 //using System.Collections.Generic;
 //using System.Linq;
 //using System.Text;
@@ -6,29 +7,23 @@
 
 namespace consoleapplication1
 {
-    // Creating and using virtual methods
-    // Override the virtual class because child classes might need some type of 
-    // customization.
+    // Understanding Upcasting
 
-    // Here is a change!
-    class Quad // represent four sided shapes in general
+    class Person
     {
-        public Quad()
-        {
-            Console.WriteLine("I'm a quad!");
-        }
+        private string _ssn;
 
-        public virtual int Perimeter(int width, int length)
+        public Person(string social)
         {
-            return (2 * width) + (2 * length);
+            this._ssn = social; // the instance field ssn is assigned using the local variable social
         }
     }
 
-    class Square : Quad // class Square inherits from class Quad
+    class Employer : Person
     {
-        public override int Perimeter(int width, int length)
+        public Employer(string social) : base(social) // calls the constructor of the base class
         {
-            return 4 * width;
+            
         }
     }
 
@@ -36,12 +31,7 @@ namespace consoleapplication1
     {
         static void Main(string[] args)
         {
-            Square mySquare = new Square();
-
-            int w = 8;
-            int l = 8;
-
-            Console.WriteLine("The perimeter of our shape is {0}", mySquare.Perimeter(w, l));
+            Person per1 = new Employer("1231231313");
             Console.Read();
         } 
     }
