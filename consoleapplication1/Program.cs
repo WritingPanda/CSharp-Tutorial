@@ -1,30 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 
 namespace consoleapplication1
 {
-    // Coding properties
-    // Getters and setters
-
-    class Person
+    // Creating and using virtual methods
+    // Override the virtual class because child classes might need some type of 
+    // customization.
+    class Quad // represent four sided shapes in general
     {
-        private string name;
-        private string ssn;
-        
-        // The keyword "value" MUST be used.
-        public string Social
+        public Quad()
         {
-            get { return this.ssn; }
-            set { this.ssn = value; }
+            Console.WriteLine("I'm a quad!");
         }
 
-        public string FullName
+        public virtual int Perimeter(int width, int length)
         {
-            get { return this.name; }
-            set { this.name = value; }
+            return (2 * width) + (2 * length);
+        }
+    }
+
+    class Square : Quad // class Square inherits from class Quad
+    {
+        public override int Perimeter(int width, int length)
+        {
+            return 4 * width;
         }
     }
 
@@ -32,11 +34,12 @@ namespace consoleapplication1
     {
         static void Main(string[] args)
         {
-            Person newPerson = new Person();
-            newPerson.FullName = "John Smith";
-            newPerson.Social = "456-82-0932";
-            Console.WriteLine(newPerson.FullName + " has the social security number given by " + newPerson.Social);
+            Square mySquare = new Square();
 
+            int w = 8;
+            int l = 8;
+
+            Console.WriteLine("The perimeter of our shape is {0}", mySquare.Perimeter(w, l));
             Console.Read();
         } 
     }
