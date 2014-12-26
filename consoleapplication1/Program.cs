@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 //using System.Security.AccessControl;
 //using System.Collections.Generic;
 //using System.Linq;
@@ -7,26 +9,15 @@
 
 namespace consoleapplication1
 {
-    // The purpose and coding of an abstract class
+    // Create a list of objects and step through it using a foreach loop
 
-    abstract class Shape // stores behaviors that are common to child classes
+    class Person
     {
-        public abstract int Area(); // Must be implemented in derived classes
-        // code inheriting from this class must provide the code to define the Area()
-    }
+        public string name;
 
-    class Rectangle : Shape // inherits from Shape class
-    {
-        private int sideLength;
-
-        public Rectangle(int side)
+        public Person(string s)
         {
-            this.sideLength = side;
-        }
-
-        public override int Area()
-        {
-            return this.sideLength*this.sideLength;
+            this.name = s;
         }
     }
 
@@ -34,7 +25,21 @@ namespace consoleapplication1
     {
         static void Main(string[] args)
         {
-            var myRectangle = new Rectangle(10);
+            List<Person> newPersonList = new List<Person>();
+
+            // Invoking the constructor of the class
+            newPersonList.Add(new Person("Becky"));
+            newPersonList.Add(new Person("Omar"));
+            newPersonList.Add(new Person("Illiana"));
+            newPersonList.Add(new Person("Illiam"));
+            newPersonList.Add(new Person("Daniel"));
+            newPersonList.Add(new Person("Celia"));
+
+            foreach (Person per in newPersonList)
+            {
+                Console.WriteLine("The person's name is " + per.name);
+            }
+
             Console.Read();
         } 
     }
