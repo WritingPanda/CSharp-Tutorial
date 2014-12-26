@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-//using System.Security.AccessControl;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-
 namespace consoleapplication1
 {
     // Create a list of objects and step through it using a foreach loop
