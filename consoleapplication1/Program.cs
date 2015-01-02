@@ -1,67 +1,47 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace consoleapplication1
 {
-    // Polymorphism
+    // Structs
 
-    public class Shape
+    class MyClass
     {
-        // Virtual method
-        public virtual void Draw()
-        {
-            Console.WriteLine("Performing base class drawing tasks.");
-        }
+        public int x; // Reference type, good for composite and complex objects; passing references
     }
 
-    class Circle : Shape
+    struct MyStruct
     {
-        public Circle()
-        {
-            Console.WriteLine("I am a circle.");
-        }
+        public int x; // Value type, good for simple composite objects; passing copies of objects
     }
 
-    class Square : Shape
+    class TestClass
     {
-        public Square()
+        public static void StructTaker(MyStruct s)
         {
-            Console.WriteLine("I am a square.");
+            s.x = 5;
         }
 
-        public override void Draw()
+        public static void ClassTaker(MyClass c)
         {
-            // Code to draw a circle
-            Console.WriteLine("Drawing a square.");
+            c.x = 5;
         }
     }
-
+    
     class Program
     {
         static void Main(string[] args)
         {
-            // Polymorphism at work #1: a Rectangle, Triangle, and Circle
-            // can all be used wherever a Shape is expected. No cast is
-            // required because an implicit conversion exists from a derived
-            // class to its base class. Each circle and square object is
-            // treated as a shape, also. So it has two forms, polymorphism in action.
-            List<Shape> newShapes = new List<Shape>();
-            newShapes.Add(new Circle()); // expects the Shape object but gets a circle
-            newShapes.Add(new Square()); // expects the Shape object but gets a square
-
-            // Polymorphism at work #2: the virtual method Draw() is
-            // invoked on each of the derived classes, not the base class.
-
-            foreach (Shape shape in newShapes)
-            {
-                shape.Draw(); // runtime polymorphism. Expects to call base class draw but invokes derived class method
-            }
-            Console.WriteLine("Press any key to exit.");
+            MyStruct a = new MyStruct();
+            MyClass b = new MyClass();
+            a.x = 1;
+            b.x = 1;
+            TestClass.StructTaker(a);
+            TestClass.ClassTaker(b);
+            // A copy was passed into StructTaker() and changed, but the original '7a' does not change
+            Console.WriteLine(a.x);
+            // A reference was passed into ClassTaker() and changed
+            Console.WriteLine(b.x);
             Console.Read();
-
-            // You create a class of type Vehicle. You then create three subclasses called Sedan, Truck, and Minivan. 
-            // Each of these can be added to a collection containing Vehicles. This is so because each is a kind of Vehicle, 
-            // and therefore polymorphism applies.
         }
     }
 }
