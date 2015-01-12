@@ -7,11 +7,11 @@ namespace consoleapplication1
 
     class Person
     {
-        public string name;
+        public string Name;
 
         public Person(string s)
         {
-            this.name = s;
+            this.Name = s;
         }
     }
 
@@ -31,7 +31,7 @@ namespace consoleapplication1
 
             foreach (Person per in newPersonList)
             {
-                Console.WriteLine("The person's name is " + per.name);
+                Console.WriteLine("The person's name is " + per.Name);
             }
 
             Console.Read();
