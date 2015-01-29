@@ -1,35 +1,29 @@
-﻿
-using System;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.Win32;
+﻿using System;
 
 namespace consoleapplication1
 {
-    // Multi-cast Delegates
-
-    // A delegate is a method wrapper
-    delegate void D(int x);
+    // Actions
+    // Encapsulates a method that has a single parameter
+    // and does not return a value
 
     class Program
     {
-        public void Square(int i)
+        private static void showCube(dynamic i)
         {
-            Console.WriteLine("{0} squared is {1}", i, i*i);
+            Console.WriteLine("The cube of {0} is {1}.", i, i*i*i);
         }
-
-        public void Cube(int i)
-        {
-            Console.WriteLine("{0} cubed is {1}", i, i * i * i);
-        }
-
         static void Main(string[] args)
         {
-            Program newprog = new Program();
-            D del1, del2, del3;
-            del1 = newprog.Square;
-            del2 = newprog.Cube;
-            del3 = del1 + del2;
-            del3(4);
+            Action<dynamic> cubeIt = showCube;
+
+            dynamic x = double.Parse(Console.ReadLine());
+            cubeIt(x);
+
+            x = int.Parse(Console.ReadLine());
+            cubeIt(x);
+
+            x = decimal.Parse(Console.ReadLine());
+            cubeIt(x);
 
             Console.Read();
         }
