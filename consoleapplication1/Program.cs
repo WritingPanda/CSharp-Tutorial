@@ -3,36 +3,54 @@ using System;
 
 namespace consoleapplication1
 {
-    // Overloading Operators
+    // Overloading Operators 2
     
     class Program
     {
-        private string whatever;
-
-        public Program(string s)
+        class PerimFinder
         {
-            this.whatever = s;
-        }
+            private int lengthOfSide;
+            private int numberOfSides;
 
-        // The + in the Console.Writeline() is the operator that we are overloading.
-        // So, when the code runs, it adds the additional text at the end of the strings.
-        // In this program, + now means concatenating the two Program objects along with an additional string.
-        public static Program operator +(Program s1, Program s2)
-        {
-            return new Program(s1.whatever + s2.whatever + " Oh yeah!");
-        }
+            public PerimFinder(int length, int n)
+            {
+                this.lengthOfSide = length;
+                this.numberOfSides = n;
+            }
 
-        public override string ToString()
-        {
-            return this.whatever;
+            public static int operator +(PerimFinder s1, PerimFinder s2)
+            {
+                return s1.numberOfSides*s1.lengthOfSide + s2.lengthOfSide*s2.numberOfSides;
+            }
         }
 
         static void Main(string[] args)
         {
-            Program newprog1 = new Program("Hello, ");
-            Program newprog2 = new Program("World!");
-            Console.WriteLine((newprog1 + newprog2).ToString());
-            Console.ReadLine();
+            ConsoleKeyInfo conkey;
+            int x;
+            int y;
+            int xNumberOfSides;
+            int yNumberOfSides;
+
+            do
+            {
+                Console.WriteLine("Enter the first side length: ");
+                x = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter the number of sides for this shape: ");
+                xNumberOfSides = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Enter the first side length: ");
+                y = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter the number of sides for this shape: ");
+                yNumberOfSides = int.Parse(Console.ReadLine());
+
+                PerimFinder newPerim1 = new PerimFinder(x, xNumberOfSides);
+                PerimFinder newPerim2 = new PerimFinder(y, yNumberOfSides);
+                Console.WriteLine(newPerim1 + newPerim2);
+
+                // Console Key, a way to capture key input and do something with it
+                conkey = Console.ReadKey();
+            } while (conkey.Key != ConsoleKey.Escape);
         }
     }
 }
