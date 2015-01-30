@@ -2,47 +2,43 @@
 
 namespace consoleapplication1
 {
-
     ///<summary>
-    /// Events are a special kind of multicast delegate 
-    /// that can only be invoked from within the class 
-    /// or struct where they are declared (the publisher 
-    /// class). If other classes or structs subscribe to 
-    /// the event, their event handler methods will be 
-    /// called when the publisher class raises the event.
+    /// Interface
+    /// An interface contains only the signatures of methods, 
+    /// properties, events or indexers. A class or struct that 
+    /// implements the interface must implement the members of 
+    /// the interface that are specified in the interface definition.
     ///</summary>
-    // Handling Simples Events Using Delegates
-    public delegate void DoTheMath(int x, int y);
+
+    interface ICanBeUsedAsAChair
+    {
+        void SittingMessage();
+    }
+
+    class MilkCrate : ICanBeUsedAsAChair
+    {
+        public MilkCrate()
+        {
+            Console.WriteLine("I'm a milk crate.");
+        }
+
+        public void SittingMessage()
+        {
+            Console.WriteLine("I'm a crate being used as a chair.");
+        }
+    }
 
     class Program
     {
-        public static event DoTheMath ops;
-
-        public static void Add(int x, int y)
+        public static void CanSitOn(ICanBeUsedAsAChair fakeChair)
         {
-            Console.WriteLine("The sum is {0}.", x + y);
+            fakeChair.SittingMessage();
         }
-
-        public static void Subtract(int x, int y)
-        {
-            Console.WriteLine("The difference is {0}.", x - y);
-        }
-
+  
         static void Main(string[] args)
         {
-            Console.WriteLine("The first number is: ");
-            int x = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("The second number is: ");
-            int y = Int32.Parse(Console.ReadLine());
-
-            ops = new DoTheMath(Add);
-
-            // Chaining multiple methods to one delegate
-            // Calls add first, then does subtract
-            ops += new DoTheMath(Subtract);
-
-            ops(x, y);
-
+            MilkCrate milkCrate = new MilkCrate();
+            CanSitOn(milkCrate);
             Console.Read();
         }
     }
