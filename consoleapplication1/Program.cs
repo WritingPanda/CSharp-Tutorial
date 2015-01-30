@@ -2,28 +2,46 @@
 
 namespace consoleapplication1
 {
-    // Actions
-    // Encapsulates a method that has a single parameter
-    // and does not return a value
+
+    ///<summary>
+    /// Events are a special kind of multicast delegate 
+    /// that can only be invoked from within the class 
+    /// or struct where they are declared (the publisher 
+    /// class). If other classes or structs subscribe to 
+    /// the event, their event handler methods will be 
+    /// called when the publisher class raises the event.
+    ///</summary>
+    // Handling Simples Events Using Delegates
+    public delegate void DoTheMath(int x, int y);
 
     class Program
     {
-        private static void showCube(dynamic i)
+        public static event DoTheMath ops;
+
+        public static void Add(int x, int y)
         {
-            Console.WriteLine("The cube of {0} is {1}.", i, i*i*i);
+            Console.WriteLine("The sum is {0}.", x + y);
         }
+
+        public static void Subtract(int x, int y)
+        {
+            Console.WriteLine("The difference is {0}.", x - y);
+        }
+
         static void Main(string[] args)
         {
-            Action<dynamic> cubeIt = showCube;
+            Console.WriteLine("The first number is: ");
+            int x = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("The second number is: ");
+            int y = Int32.Parse(Console.ReadLine());
 
-            dynamic x = double.Parse(Console.ReadLine());
-            cubeIt(x);
+            ops = new DoTheMath(Add);
 
-            x = int.Parse(Console.ReadLine());
-            cubeIt(x);
+            // Chaining multiple methods to one delegate
+            // Calls add first, then does subtract
+            ops += new DoTheMath(Subtract);
 
-            x = decimal.Parse(Console.ReadLine());
-            cubeIt(x);
+            ops(x, y);
 
             Console.Read();
         }
