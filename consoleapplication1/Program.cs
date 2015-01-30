@@ -3,33 +3,29 @@
 namespace consoleapplication1
 {
     ///<summary>
-    /// Error Checking with if/else
+    /// Try Catch Finally Construct
     ///</summary>
-
-    class Calculator
-    {
-        public Calculator()
-        {
-            Console.WriteLine("I'm a lazy calculator. I do only division.");
-        }
-
-        public double Divide(double x, double y)
-        {
-            if (y != 0) return x / y;
-
-            Console.WriteLine("Whoa! WTF! You can't divide by 0!");
-            return 0.0;
-        }
-    }
 
     class Program
     {
         static void Main(string[] args)
         {
-            Calculator calc = new Calculator();
-            int x = 4;
-            int y = 0;
-            Console.WriteLine("The result of your division is: {0}.", calc.Divide(x, y));
+            int i = 12;
+            object o = "hello";
+
+            try
+            {
+                i = (int) o; // tries to convert an object into an integer
+            }
+            catch (InvalidCastException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("This code runs no matter what happens above.");
+            }
+
             Console.Read();
         }
     }
