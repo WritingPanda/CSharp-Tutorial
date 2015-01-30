@@ -4,43 +4,27 @@ using System.Diagnostics;
 namespace consoleapplication1
 {
     ///<summary>
-    /// Destructors
-    /// Used to destruct instances of classes.
-    /// Can only be used with classes.
-    /// Cannot be inherited or overloaded.
-    /// Cannot be called. Invoked automatically.
-    /// Does not take modifiers or have parameters.
+    /// String Functions
     ///</summary>
-
-    class Sample
-    {
-        private Stopwatch timer;
-
-        public Sample()
-        {
-            timer = Stopwatch.StartNew();
-            Console.WriteLine("This code runs when the object is constructed.");
-        }
-
-        public void HowLong()
-        {
-            Console.WriteLine("{0} has lived for {1}.", this, timer.Elapsed);
-            Console.Read();
-        }
-
-        ~Sample()
-        {
-            HowLong();
-            Console.WriteLine("This code runs when the object is destroyed.");
-            Console.Read();
-        }
-    }
 
     class Program
     {
         static void Main(string[] args)
         {
-            Sample samp = new Sample();
+            string str = "This is an example of a string that spans " +
+                         "multiple lines.";
+            Console.WriteLine("The string is {0}.", str);
+
+            // Get the character at the index of 1
+            string part = str.Substring(1, 5);
+            Console.WriteLine(part);
+
+            // Determine whether the string begins with string "This"
+            Console.WriteLine("The string starts with 'This': {0},", str.StartsWith("This"));
+
+            // Find out the first instance of the letter i and what index it is located
+            Console.WriteLine("The first letter i is at {0}.", str.IndexOf("i"));
+
             Console.Read();
         }
     }
