@@ -1,35 +1,46 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace consoleapplication1
 {
     ///<summary>
-    /// Handling Multiple Exceptions
+    /// Throwing and Catching Exceptions
     ///</summary>
 
     class Program
     {
+        public static int Divide(int x, int y)
+        {
+            if (y == 0)
+            {
+                throw new DivideByZeroException();
+            }
+            else
+            {
+                return x/y;
+            }
+        }
         static void Main(string[] args)
         {
             try
             {
-                Console.WriteLine("Enter top");
+                Console.WriteLine("Enter numerator: ");
+
                 int top = Int32.Parse(Console.ReadLine());
-                Console.WriteLine("Enter the bottom");
+                Console.WriteLine("Enter denominator: ");
                 int bottom = Int32.Parse(Console.ReadLine());
-                int quot = top/bottom;
-                Console.WriteLine(quot);
+
+                Console.WriteLine(Divide(top, bottom));
             }
             catch (DivideByZeroException ex)
             {
                 Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
             }
             catch (FormatException ex)
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.StackTrace);
             }
-
             Console.Read();
         }
     }
