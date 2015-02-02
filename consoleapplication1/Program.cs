@@ -1,46 +1,39 @@
 ﻿using System;
-using System.Security.Cryptography.X509Certificates;
 
 namespace consoleapplication1
 {
     ///<summary>
-    /// Throwing and Catching Exceptions
+    /// Object Equals and the Reference Equals Methods
+    /// The Object class is the parent class of objects.
+    /// Object.Equals: determines whether the specificed object is equal to the current object.
+    /// ReferenceEquals: determines whether the object instances are the same instance.
     ///</summary>
 
     class Program
     {
-        public static int Divide(int x, int y)
+        class Person
         {
-            if (y == 0)
+            // Good practice to put an underline in front of private properties
+            private string _fName;
+
+            public Person(string name)
             {
-                throw new DivideByZeroException();
-            }
-            else
-            {
-                return x/y;
+                _fName = name;
             }
         }
         static void Main(string[] args)
         {
-            try
-            {
-                Console.WriteLine("Enter numerator: ");
-
-                int top = Int32.Parse(Console.ReadLine());
-                Console.WriteLine("Enter denominator: ");
-                int bottom = Int32.Parse(Console.ReadLine());
-
-                Console.WriteLine(Divide(top, bottom));
-            }
-            catch (DivideByZeroException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            catch (FormatException ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
-            }
+            Person per1 = new Person("Omar");
+            Person per2 = per1;
+            Person per3 = new Person("Omar");
+            // True
+            Console.WriteLine("per1 and per2 are the same: {0}.", per1.Equals(per2));
+            // True
+            Console.WriteLine("per1 and per2 are the same: {0}.", ReferenceEquals(per1, per2));
+            // False
+            Console.WriteLine("per1 and per3 are the same: {0}.", per1.Equals(per3));
+            // False
+            Console.WriteLine("per1 and per3 are the same: {0}", ReferenceEquals(per1, per3));
             Console.Read();
         }
     }
