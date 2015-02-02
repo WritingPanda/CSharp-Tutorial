@@ -3,27 +3,31 @@
 namespace consoleapplication1
 {
     ///<summary>
-    /// Try Catch Finally Construct
+    /// Handling Multiple Exceptions
     ///</summary>
 
     class Program
     {
         static void Main(string[] args)
         {
-            int i = 12;
-            object o = "hello";
-
             try
             {
-                i = (int) o; // tries to convert an object into an integer
+                Console.WriteLine("Enter top");
+                int top = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("Enter the bottom");
+                int bottom = Int32.Parse(Console.ReadLine());
+                int quot = top/bottom;
+                Console.WriteLine(quot);
             }
-            catch (InvalidCastException e)
+            catch (DivideByZeroException ex)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
             }
-            finally
+            catch (FormatException ex)
             {
-                Console.WriteLine("This code runs no matter what happens above.");
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
             }
 
             Console.Read();
