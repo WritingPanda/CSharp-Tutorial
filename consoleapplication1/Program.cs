@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace consoleapplication1
+﻿namespace consoleapplication1
 {
     ///<summary>
-    /// 
+    ///
     ///</summary>
 
     class Program
