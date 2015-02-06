@@ -3,33 +3,38 @@
 namespace consoleapplication1
 {
     ///<summary>
-    /// The ToString Function
-    /// Returns a string that represents the current object
+    /// Objects into Arrays with Indexers
+    /// Indexer takes an object and turns it into an array
     ///</summary>
 
-    class Person
+    class IndexerExample
     {
-        public Person()
-        {
-            Console.WriteLine("I'm a person object.");
-        }
-    }
+        private readonly float[] _myarray = new float[3] { 3.4F, 5.6F, 8.9F };
 
-    class Boss : Person
-    {
-        public Boss()
+        // header of indexer. Returns a float and accepts an integer
+        // the float is the value from the array above, and the integer is the index in the array
+        public float this[int i]
         {
-            Console.WriteLine("I'm a boss man.");
-        } 
+            // returns a value from the array above
+            get { return _myarray[i]; }
+            // sets a value inside the array
+            set { _myarray[i] = value; }
+        }
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(new Person().ToString());
-            Console.WriteLine(new Boss().ToString());
-            Console.WriteLine(5.ToString());
+            IndexerExample myExample = new IndexerExample();
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine("The index {0} stores the value: {1}", i, myExample[i]);
+            }
+
+            Console.WriteLine("The first index stores the value: {0}", myExample[0]);
+            Console.WriteLine("The second index stores the value: {0}", myExample[1]);
+            Console.WriteLine("The third index stores the value: {0}", myExample[2]);
             Console.Read();
         }
     }
