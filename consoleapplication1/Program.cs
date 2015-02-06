@@ -3,23 +3,36 @@
 namespace consoleapplication1
 {
     ///<summary>
-    /// Get Type Method
-    /// Gets the type of an object
+    /// Memberwise Clone, Shallow Copies and Deep copies
+    /// Shallow Copy: reference is copied
+    /// Deep copy: object is copied
     ///</summary>
 
-    public class Class1
+    public class SSN
     {
-        public Class1()
+        public string social;
+        public SSN(string ss)
         {
-            Console.WriteLine("Class 1 object.");
+            social = ss;
         }
     }
 
-    public class Class2
+    class Person
     {
-        public Class2()
+        public string fname;
+        public SSN newssn;
+
+        public Person(string first, string socialnumber)
         {
-            Console.WriteLine("Class 2 object.");
+            fname = first;
+            newssn = new SSN(socialnumber);
+        }
+
+        public Person Copy()
+        {
+            // Clones the current person object and return a shallow copy of the person object
+            // It copies the object by reference
+            return (Person) this.MemberwiseClone();
         }
     }
 
@@ -27,11 +40,18 @@ namespace consoleapplication1
     {
         static void Main(string[] args)
         {
-            Class1 klass1 = new Class1();
-            Class2 klass2 = new Class2();
-            Console.WriteLine(klass1.GetType());
-            Console.WriteLine(klass2.GetType());
-            Console.WriteLine(klass1.GetType() == klass2.GetType());
+            Person per1 = new Person("John", "1234");
+            Console.WriteLine("The name is " + per1.fname + " and the ssn is " + per1.newssn.social);
+
+            Person per2 = per1.Copy();
+            Console.WriteLine("The name is " + per2.fname + " and the ssn is " + per2.newssn.social);
+            per2.newssn.social = "5678";
+            // the new ssn is also reflected in the data for per1
+            // simple data types like integers are copied bit by bit
+            // however, object types are copied by reference
+            // so changing one object changes other objects -- Shallow Copy
+            Console.WriteLine("The name is " + per1.fname + " and the ssn is " + per1.newssn.social);
+            Console.WriteLine("The name is " + per2.fname + " and the ssn is " + per2.newssn.social);
             Console.Read();
         }
     }
