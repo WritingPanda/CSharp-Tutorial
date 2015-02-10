@@ -1,11 +1,10 @@
 ﻿using System;
-// Instead of typing this whole thing, I can use this syntax
-using MathematicsLibrary.Arithmetic;
+using System.IO;
 
 namespace consoleapplication1
 {
     /// <summary>
-    /// Fully Qualified Names
+    /// Display files and folders in a directory
     /// </summary>
 
     
@@ -14,8 +13,20 @@ namespace consoleapplication1
     {
         static void Main(string[] args)
         {
-            // Referencing a custom DLL 
-            Console.WriteLine(AddingMachine.Add(1, 2, 3, 4, 5, 6.7));
+            // Use @ in front of a string to avoid using escape characters
+            string[] files = Directory.GetFiles(@"C:\Users\Omar\Documents\data");
+            string[] folders = Directory.GetDirectories(@"C:\Users\Omar\Documents");
+
+            foreach (string f in files)
+            {
+                Console.WriteLine("The file called {0} is located in {1}.", Path.GetFileName(f), Path.GetDirectoryName(f));
+            }
+
+            foreach (string f in folders)
+            {
+                Console.WriteLine("The directory is {0}.", f.ToString());
+            }
+
             Console.Read();
         }
     }
