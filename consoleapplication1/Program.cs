@@ -1,40 +1,31 @@
 ﻿using System;
-using System.Diagnostics;
 
 namespace consoleapplication1
 {
     /// <summary>
-    /// Conditional Methods
+    /// Nullable Data Type
     /// </summary>
 
-    public class Trace
-    {
-        // Works only when the program is running in DEBUG mode
-        [Conditional("DEBUG")]
-        public static void Message(string traceMessage)
-        {
-            Console.WriteLine("[TRACE] - " + traceMessage);
-        }
-    }
+    
 
     class Program
     {
         static void Main(string[] args)
         {
-            Trace.Message("Main starting");
-            if (args.Length == 0)
+            // Really used for working with databases
+            // Can set variable to null instead of 0 or some other value
+            // Works nice with databases
+            int? x = null;
+
+            if (x.HasValue)
             {
-                Console.WriteLine("No arguments have been passed.");
+                Console.WriteLine("The value of x is {0}.", x);
             }
             else
             {
-                for (int i = 0; i < args.Length; i++)
-                {
-                    Console.WriteLine("Arg[{0}] is [{1}].", i, args[i]);
-                }
+                Console.WriteLine("The value of x has been set to null.");
             }
 
-            Trace.Message("Main ending");
             Console.Read();
         }
     }
