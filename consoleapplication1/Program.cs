@@ -1,27 +1,40 @@
 ﻿using System;
-using System.IO;
+using System.Diagnostics;
 
 namespace consoleapplication1
 {
-    ///<summary>
-    /// Writing and reading files
-    ///</summary>
+    /// <summary>
+    /// Conditional Methods
+    /// </summary>
+
+    public class Trace
+    {
+        // Works only when the program is running in DEBUG mode
+        [Conditional("DEBUG")]
+        public static void Message(string traceMessage)
+        {
+            Console.WriteLine("[TRACE] - " + traceMessage);
+        }
+    }
 
     class Program
     {
         static void Main(string[] args)
         {
-            const string filename = "C:\\Users\\Omar\\Desktop\\sample.txt";
-            TextWriter tw = new StreamWriter(filename);
-            // Will read from the console window and save to the file
-            tw.Write(Console.ReadLine());
-            tw.Close();
+            Trace.Message("Main starting");
+            if (args.Length == 0)
+            {
+                Console.WriteLine("No arguments have been passed.");
+            }
+            else
+            {
+                for (int i = 0; i < args.Length; i++)
+                {
+                    Console.WriteLine("Arg[{0}] is [{1}].", i, args[i]);
+                }
+            }
 
-            TextReader tr = new StreamReader(filename);
-            // Will read from the file and display to the output window
-            Console.WriteLine(tr.ReadLine());
-            tr.Close();
-
+            Trace.Message("Main ending");
             Console.Read();
         }
     }
