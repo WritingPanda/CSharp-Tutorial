@@ -1,9 +1,12 @@
 ﻿using System;
+// This is the DLL in a difference solution
+// Had to change framework from 4.5 to 4.5.1 due to ArithmeticOps using the 4.5.1 .NET framework
+using ArithmeticOps;
 
 namespace consoleapplication1
 {
     /// <summary>
-    /// Nullable Data Type
+    /// Create a Dynamic Link Library and Reference It
     /// </summary>
 
     
@@ -12,20 +15,9 @@ namespace consoleapplication1
     {
         static void Main(string[] args)
         {
-            // Really used for working with databases
-            // Can set variable to null instead of 0 or some other value
-            // Works nice with databases
-            int? x = null;
-
-            if (x.HasValue)
-            {
-                Console.WriteLine("The value of x is {0}.", x);
-            }
-            else
-            {
-                Console.WriteLine("The value of x has been set to null.");
-            }
-
+            Calc myCalc = new Calc();
+            Console.WriteLine("The sum of 1 and 2 is {0}.", myCalc.Add(1, 2));
+            Console.WriteLine("The difference of 1 and 2 is {0}.", myCalc.Subtract(1, 2));
             Console.Read();
         }
     }
