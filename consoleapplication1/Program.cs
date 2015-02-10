@@ -1,12 +1,11 @@
 ﻿using System;
-// This is the DLL in a difference solution
-// Had to change framework from 4.5 to 4.5.1 due to ArithmeticOps using the 4.5.1 .NET framework
-using ArithmeticOps;
+// Instead of typing this whole thing, I can use this syntax
+using MathematicsLibrary.Arithmetic;
 
 namespace consoleapplication1
 {
     /// <summary>
-    /// Create a Dynamic Link Library and Reference It
+    /// Fully Qualified Names
     /// </summary>
 
     
@@ -15,9 +14,8 @@ namespace consoleapplication1
     {
         static void Main(string[] args)
         {
-            Calc myCalc = new Calc();
-            Console.WriteLine("The sum of 1 and 2 is {0}.", myCalc.Add(1, 2));
-            Console.WriteLine("The difference of 1 and 2 is {0}.", myCalc.Subtract(1, 2));
+            // Referencing a custom DLL 
+            Console.WriteLine(AddingMachine.Add(1, 2, 3, 4, 5, 6.7));
             Console.Read();
         }
     }

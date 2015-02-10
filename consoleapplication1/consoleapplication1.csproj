@@ -61,8 +61,8 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ArithmeticOps">
-      <HintPath>..\..\ArithmeticOps\ArithmeticOps\bin\Debug\ArithmeticOps.dll</HintPath>
+    <Reference Include="MathematicsLibrary">
+      <HintPath>..\..\MathematicsLibrary\MathematicsLibrary\bin\Debug\MathematicsLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
