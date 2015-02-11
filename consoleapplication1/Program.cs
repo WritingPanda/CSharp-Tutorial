@@ -1,27 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace consoleapplication1
 {
     /// <summary>
-    /// Intro to Generics
-    /// Generics let you tailor a method, class, structure, 
-    /// or interface to the precise data type it acts upon.
-    /// Among the benefits of generics are increased code 
-    /// reusability and type safety.
+    /// List<T> with predefined types
     /// </summary>
 
     class Program
     {
         static void Main(string[] args)
         {
-            // 
-            Generics<int> myGenerics1 = new Generics<int>(5);
-            int y1 = myGenerics1.Get();
-            Console.WriteLine("The value of y1 is {0}.", y1);
+            List<int> myItems = new List<int>(5);
+            for (int i = 0; i < 5; i++)
+            {
+                myItems.Add(i);
+            }
 
-            Generics<string> myGenerics2 = new Generics<string>("Hello world");
-            string y2 = myGenerics2.Get();
-            Console.WriteLine("The value of y2 is {0}.", y2);
+            foreach (int d in myItems)
+            {
+                Console.WriteLine("The value stored is {0}.", d);
+            }
+
+            Console.WriteLine("The maximum length of the list is {0}.", myItems.Capacity);
+            Console.WriteLine("The number of items actually stored is {0}.", myItems.Count);
             Console.Read();
         }
     }
