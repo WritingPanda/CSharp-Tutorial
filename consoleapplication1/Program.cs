@@ -4,26 +4,39 @@ using System.Collections.Generic;
 namespace consoleapplication1
 {
     /// <summary>
-    /// List<T> with predefined types
+    /// List<T> with a user defined type
     /// </summary>
+    
+    public class Car
+    {
+        private readonly int _price;
+
+        public Car(int p)
+        {
+            this._price = p;
+        }
+
+        public int GetPrice()
+        {
+            return this._price;
+        }
+    }
 
     class Program
     {
         static void Main(string[] args)
         {
-            List<int> myItems = new List<int>(5);
-            for (int i = 0; i < 5; i++)
+            List<Car> mycarlist = new List<Car>(3);
+            for (int i = 0; i < 3; i++)
             {
-                myItems.Add(i);
+                mycarlist.Add(new Car(10000 * i));
             }
 
-            foreach (int d in myItems)
+            foreach (Car c in mycarlist)
             {
-                Console.WriteLine("The value stored is {0}.", d);
+                Console.WriteLine("The price of the car is {0}.", c.GetPrice());
             }
 
-            Console.WriteLine("The maximum length of the list is {0}.", myItems.Capacity);
-            Console.WriteLine("The number of items actually stored is {0}.", myItems.Count);
             Console.Read();
         }
     }
