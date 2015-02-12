@@ -1,39 +1,24 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace consoleapplication1
 {
     /// <summary>
-    /// Returning Lambda Expression References from Functions
-    /// A lambda expression is an anonymous function 
-    /// that you can use to create delegates or expression tree types.
-    /// By using lambda expressions, you can write local functions 
-    /// that can be passed as arguments or returned as the value of 
-    /// function calls. Lambda expressions are particularly helpful 
-    /// for writing LINQ query expressions.
+    /// Funcs with Dynamic Variables
     /// </summary>
 
     class Program
     {
-        private static int myvar = 5;
-
-        public static Func<int> Adder()
-        {
-            return () => ++myvar;
-        }
-
-        public static Func<int, int> Square()
-        {
-            return (int a) => (a*a);
-        } 
-
         static void Main(string[] args)
         {
 
-            Func<int> myFunc1 = Adder();
-            Console.WriteLine(myFunc1());
+            Func<dynamic, dynamic, int, dynamic> divide = (a, b, round) => Math.Round(a/b, round);
+            Func<dynamic, dynamic, int, dynamic> multiply = (a, b, round) => Math.Round(a*b, round);
 
-            Func<int, int> myFunc2 = Square();
-            Console.WriteLine(myFunc2(5));
+            dynamic x = divide(5.56, 6.789, 4);
+            dynamic y = multiply(5.56, 6.789, 4);
+
+            Console.WriteLine(x); Console.WriteLine(y);
 
             Console.Read();
         }
