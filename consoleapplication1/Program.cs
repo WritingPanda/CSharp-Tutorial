@@ -3,7 +3,7 @@
 namespace consoleapplication1
 {
     /// <summary>
-    /// Lambda Expressions that Change Local Variables
+    /// Returning Lambda Expression References from Functions
     /// A lambda expression is an anonymous function 
     /// that you can use to create delegates or expression tree types.
     /// By using lambda expressions, you can write local functions 
@@ -14,13 +14,27 @@ namespace consoleapplication1
 
     class Program
     {
+        private static int myvar = 5;
+
+        public static Func<int> Adder()
+        {
+            return () => ++myvar;
+        }
+
+        public static Func<int, int> Square()
+        {
+            return (int a) => (a*a);
+        } 
+
         static void Main(string[] args)
         {
-            double x = double.Parse(Console.ReadLine());
-            Func<double> myFunc1 = () => ++x;
-            Func<double, double> myFunc2 = (a) => (a*a);
 
-            Console.WriteLine("The value of {0} squared is {1}.", myFunc1(), myFunc2(x));
+            Func<int> myFunc1 = Adder();
+            Console.WriteLine(myFunc1());
+
+            Func<int, int> myFunc2 = Square();
+            Console.WriteLine(myFunc2(5));
+
             Console.Read();
         }
     }
