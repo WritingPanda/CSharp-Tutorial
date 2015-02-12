@@ -3,22 +3,20 @@
 namespace consoleapplication1
 {
     /// <summary>
-    /// Lambda Expression Basics
+    /// Func<> Notation for Lambda Expressions
     /// </summary>
 
     class Program
     {
-        delegate int Multiply(int x, int y);
-
-        delegate double Add(double x, double y);
-
         static void Main(string[] args)
         {
-            Multiply ybyx = (y, x) => (y*x);
-            Console.WriteLine("The product of 4 and 6 is {0}.", ybyx(4, 6));
+            // Declare code of a type function
+            Func<String> myFunc1 = () => "Hello world";
+            Console.WriteLine("Func1 returns {0}.", myFunc1());
 
-            Add ytox = (y, x) => (y + x);
-            Console.WriteLine("The sum of 4 and 6 is {0}.", ytox(4, 6));
+            // Three ints for two parameters and one return value
+            Func<int, int, int> myFunc2 = (int a, int b) => (a + b);
+            Console.WriteLine("The sum of 4 and 10 is {0}.", myFunc2(4, 10));
 
             Console.Read();
         }
