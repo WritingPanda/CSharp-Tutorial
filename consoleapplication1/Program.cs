@@ -3,23 +3,19 @@
 namespace consoleapplication1
 {
     /// <summary>
-    /// Extracting Methods and Organizing Using Statements
+    /// Pointers and AddressOf Operator
+    /// Pointers are references to data stored in memory
     /// </summary>
     class Program
     {
-        public static void Display()
+        unsafe static void Main(string[] args)
         {
-            Display2();
-        }
-
-        private static void Display2()
-        {
-            Console.WriteLine("This is coming from function Display().");
-        }
-
-        static void Main(string[] args)
-        {
-            Display();
+            int i = 4;
+            // Gets the address of i and stores it in mynumb
+            int* mynumb = &i;
+            // Changes the value of i
+            *mynumb = 135;
+            Console.WriteLine(i);
             Console.Read();
         }
     }
