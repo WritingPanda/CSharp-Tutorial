@@ -1,25 +1,25 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 
 namespace consoleapplication1
 {
     /// <summary>
-    /// Funcs with Dynamic Variables
+    /// Extracting Methods and Organizing Using Statements
     /// </summary>
-
     class Program
     {
+        public static void Display()
+        {
+            Display2();
+        }
+
+        private static void Display2()
+        {
+            Console.WriteLine("This is coming from function Display().");
+        }
+
         static void Main(string[] args)
         {
-
-            Func<dynamic, dynamic, int, dynamic> divide = (a, b, round) => Math.Round(a/b, round);
-            Func<dynamic, dynamic, int, dynamic> multiply = (a, b, round) => Math.Round(a*b, round);
-
-            dynamic x = divide(5.56, 6.789, 4);
-            dynamic y = multiply(5.56, 6.789, 4);
-
-            Console.WriteLine(x); Console.WriteLine(y);
-
+            Display();
             Console.Read();
         }
     }
