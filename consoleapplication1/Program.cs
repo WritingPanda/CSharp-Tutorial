@@ -1,32 +1,29 @@
 ﻿using System;
+using System.IO;
 
 namespace consoleapplication1
 {
     /// <summary>
-    /// Arrays of Pointers
+    /// Using the Using Statement
     /// </summary>
     class Program
     {
-        unsafe static void Main(string[] args)
+        static void Main(string[] args)
         {
-            // An array of memory addresses
-            int*[] arr = new int*[3];
-            int x = 10;
-            int y = 11;
-            int z = 12;
-            arr[0] = &x;
-            arr[1] = &y;
-            arr[2] = &z;
-
-            for (int i = 0; i < arr.Length; i++)
+            using (TextWriter writer = File.CreateText("log.txt"))
             {
-                // assigns new values to the variables
-                *arr[i] = i*i + 1;
+                writer.WriteLine(Console.ReadLine());
             }
 
-            Console.WriteLine(x);
-            Console.WriteLine(y);
-            Console.WriteLine(z);
+            using (TextReader reader = File.OpenText("log.txt"))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    Console.WriteLine(line);
+                }
+            }
+
             Console.Read();
         }
     }
